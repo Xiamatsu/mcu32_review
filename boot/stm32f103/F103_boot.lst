@@ -4,6 +4,7 @@ F103_boot.bin:     file format binary
 
 Disassembly of section .data:
 
+
 00000000 <.data>:
    0:	01fc      	lsls	r4, r7, #7
    2:	2000      	movs	r0, #0
