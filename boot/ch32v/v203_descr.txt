@@ -1,0 +1,22 @@
+2c94	startup procedure (init sp,gp,data,bss and csr)
+			sp = 20002000; gp = 200008f0
+			.data = 20000000..20000117 (from flash 3a64..3b7c)
+			.bss = 20000118..200005a3 fill zero
+08ba	main
+	3174	- [20000146].b = 96M/8M = 12
+					[x144].h = 12*1000 = 12000
+	08ac	- [x360].b = [1ffff706].b	  0x31 (49)
+	0db4	-
+		...
+		3620 (96M) -
+		31fc
+		35bc
+		...
+	240c
+	1c20
+	24b0 (0,0)
+	31cc (0x32)
+	24b0 (1,1)
+	2462
+	22d2
+	...

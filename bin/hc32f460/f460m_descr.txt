@@ -1,0 +1,33 @@
+SRAM
+1fff8000  data init    (0x0018 byte)
+1fff8018  irq vectors  (127 * 4 = 512 byte - 0x0200)
+1fff8218  bss data
+
+
+00000320  Start
+	  ... configure SRAM wait state
+	  000018ac
+	  ... enable FPU
+	  - 000017f0
+	    00000280
+	      00000288	init data & bss
+	        000002bc  copy data from flash into sram	
+		000002d8  fill zero bss 		
+	      00000300
+		00000540
+		  000003f0 r0 = 1fff8218
+		  ...
+		  00000364 (r0,r1,r2,r3 = 1fff8278,1fff8878,1fff8478,1fff8478
+		  ... sp = r1 = 1fff8878
+		  ... 1fff8218 fill zero 16 byte
+		...
+		000002f4
+		  000022fc  init fpscr
+		00002188  
+		000003e4
+		  00000312
+		  ... r0 = 1fff8218
+		...
+		000002fc  empty proc
+		...
+		00002140	
