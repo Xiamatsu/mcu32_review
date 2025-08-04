@@ -1,15 +1,15 @@
 #### Прошивки найденные в микроконтроллерах
 
-$\textsf{\color{blue}STM32F100}$
+$\textsf{\color{blue}STM32F100}$<br>
 плата STM32VLDISCOVERY тестовая программа мигания светодиодом
 
-$\textsf{\color{blue}STM32F103}$
+$\textsf{\color{blue}STM32F103}$<br>
 плата BluePill
 
-$\textsf{\color{blue}HC32F460}$
+$\textsf{\color{blue}HC32F460}$<br>
 демо-плата с HC32F460JETA - программа мигания светодиодом с разной частотой
 
-$\textsf{\color{blue}N32G452}$
+$\textsf{\color{blue}N32G452}$<br>
 самая интересная прошивка с только впаянного микроконтроллера N32G452CCL7<br>
 
 ```
