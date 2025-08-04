@@ -1,4 +1,4 @@
-```
+
 boot_v003.bin:     file format binary
 
 
@@ -6,26 +6,26 @@ Disassembly of section .text:
 
 00000000 <.text>:
 _Start:
-   0:	73c0006f   	j	0x073c
+0000:	73c0006f   	j	0x073c
 
-   4:	0000    
-   6:	0000    
+0004:	0000    
+0006:	0000    
 
 # Save s0, s1, ra 
 _Reg_Push_2:
-   8:	1151    	addi	sp,sp,-12
-   a:	c026    	sw		s1,0(sp)
-   c:	c222        sw		s0,4(sp)
-   e:	c406        sw		ra,8(sp)
-  10:	8282        jr		t0
+0008:	1151        addi	sp,sp,-12
+000a:	c026        sw		s1,0(sp)
+000c:	c222        sw		s0,4(sp)
+000e:	c406        sw		ra,8(sp)
+0010:	8282        jr		t0
 
 # Restore s0, s1 and return use ra
 _Reg_Pop_2_ret:
-  12:	4482        lw		s1,0(sp)
-  14:	4412        lw		s0,4(sp)
-  16:	40a2        lw		ra,8(sp)
-  18:	0131        addi	sp,sp,12
-  1a:	8082        ret
+0012:	4482        lw		s1,0(sp)
+0014:	4412        lw		s0,4(sp)
+0016:	40a2        lw		ra,8(sp)
+0018:	0131        addi	sp,sp,12
+001a:	8082        ret
 
 # ? write halfword (uint16_t* addr, uint16_t val)  
 # ? a0 = addr; a1 = val  -->  [a0].h = a1
@@ -33,13 +33,13 @@ _Reg_Pop_2_ret:
 # user-option bytes programming 
 #
 __sub__001C:                                
-  1c:	400227b7    lui		a5,0x40022      # 0x40022000 - Flash Interface
-  20:	47d8        lw		a4,12(a5)
-  22:	8b05        andi	a4,a4,1
-  24:	ff75        bnez	a4,0x20         # wait [0x4002200C].bit0 == 0
+001c:	400227b7    lui		a5,0x40022      # 0x40022000 - Flash Interface
+0020:	47d8        lw		a4,12(a5)
+0022:	8b05        andi	a4,a4,1
+0024:	ff75        bnez	a4,0x20         # wait [0x4002200C].bit0 == 0
 
-  26:	45670737    lui		a4,0x45670
-  2a:	12370713    addi	a4,a4,291       # 0x45670123
+0026:	45670737    lui		a4,0x45670
+002a:	12370713    addi	a4,a4,291       # 0x45670123
   2e:	c798        sw		a4,8(a5)        # [0x40022008] = 0x45670123
   30:	cdef9737    lui		a4,0xcdef9
   34:	9ab70713    addi	a4,a4,-1621     # 0xcdef89ab
@@ -51,9 +51,9 @@ __sub__001C:
 
   44:	400227b7    lui		a5,0x40022
 
-  48:	47d8        	lw		a4,12(a5)
-  4a:	8b05        	andi	a4,a4,1
-  4c:	ff75        	bnez	a4,0x48         # wait [0x4002200C].bit0 == 0
+  48:	47d8          lw    a4,12(a5)
+  4a:	8b05          andi  a4,a4,1
+  4c:	ff75          bnez  a4,0x48         # wait [0x4002200C].bit0 == 0
 
   4e:	4b98        lw		a4,16(a5)
   50:	9b3d        andi	a4,a4,-17
@@ -74,9 +74,9 @@ __sub__0056:
   6c:	8f55        or		a4,a4,a3
   6e:	cb98        sw		a4,16(a5)       # [0x40022010] |= 0x80000
 
-  70:	47d8        	lw		a4,12(a5)
-  72:	8b05        	andi	a4,a4,1
-  74:	ff75        	bnez	a4,0x70         # wait [0x4002200C].bit0 == 0
+  70:	47d8          lw    a4,12(a5)
+  72:	8b05          andi  a4,a4,1
+  74:	ff75          bnez  a4,0x70         # wait [0x4002200C].bit0 == 0
 
   76:	4b94        lw		a3,16(a5)
   78:	7741        lui		a4,0xffff0
@@ -90,20 +90,20 @@ __sub__0056:
   88:	000402b7    lui		t0,0x40
   8c:	04000393    li		t2,64
 __mm__0090:
-  90:	4b90        	lw		a2,16(a5)
-  92:	00d58433    	add		s0,a1,a3
-  96:	00666633    	or		a2,a2,t1
-  9a:	cb90        	sw		a2,16(a5)
-  9c:	4000        	lw		s0,0(s0)
-  9e:	00d50633    	add		a2,a0,a3
-  a2:	c200        	sw		s0,0(a2)
-  a4:	4b90        	lw		a2,16(a5)
-  a6:	00566633    	or		a2,a2,t0
-  aa:	cb90        	sw		a2,16(a5)
+  90:	4b90          lw    a2,16(a5)
+  92:	00d58433      add   s0,a1,a3
+  96:	00666633      or    a2,a2,t1
+  9a:	cb90          sw    a2,16(a5)
+  9c:	4000          lw    s0,0(s0)
+  9e:	00d50633      add   a2,a0,a3
+  a2:	c200          sw    s0,0(a2)
+  a4:	4b90          lw    a2,16(a5)
+  a6:	00566633      or    a2,a2,t0
+  aa:	cb90          sw    a2,16(a5)
 __mm__00ac:
-  ac:	47d0        		lw		a2,12(a5)
-  ae:	8a05        		andi	a2,a2,1
-  b0:	fe75        		bnez	a2,0x00ac
+  ac:	47d0            lw    a2,12(a5)
+  ae:	8a05            andi  a2,a2,1
+  b0:	fe75        	  bnez  a2,0x00ac
 
   b2:	4b90        	lw		a2,16(a5)
   b4:	0691        	addi	a3,a3,4 		# 0x00080004
@@ -922,4 +922,3 @@ _Init:
  7fa:	ffff                	.2byte	0xffff
  7fc:	ffff                	.2byte	0xffff
  7fe:	ffff                	.2byte	0xffff
-```
