@@ -31,7 +31,14 @@ Boot прошивки для PY32F002A, PY32F003, PY32F030  совершенно
   0x0003  0b0000000000000011 - PB0,1
   0x0004  0b0000000000000100 - PF2
 ```
-#### ......
+#### 0x1FFF0DA0-0x1FFF0DFF
+???
+
+#### 0x1FFF0E00-0x1FFF0E7F
+UID
+
+#### 0x1FFF0E80-0x1FFF0EFF
+Option bytes
 
 #### 0x1FFF0F00-0x1FFF0F7F
 
@@ -40,14 +47,16 @@ Boot прошивки для PY32F002A, PY32F003, PY32F030  совершенно
 Калибровочные константы для записи в Flash ( для разных HSI )<br>
 Есть описание в DS и RM
 
-#### ......
+#### 0x1FFF0F80-0x1FFF0FFB
+???
 
-#### 0x1FFF0FFC
+#### 0x1FFF0FFC-0x1FFF0FFF
 ```
-// для  PY32F003L24  0x1FFF0FFC: 01  
-// для  PY32F002AW15 0x1FFF0FFC: 13  
-// для  PY32F003W16  0x1FFF0FFC: 13  
-// для  PY32F030K28  0x1FFF0FFC: 37  
+// для  PY32F003L24  0x1FFF0FFC: 01 00 FE FF
+// для  PY32F002AW15 0x1FFF0FFC: 13 00 EC FF
+// для  PY32F003W16  0x1FFF0FFC: 13 00 EC FF
+// для  PY32F030K28  0x1FFF0FFC: 37 00 C8 FF
+  (используется 1 байт, 2-й равен 0, а 3 и 4 инверсия 1 и 2)
 ```
 Закодирован размер RAM и Flash<br>
 01 - 2K RAM 16K Flash<br>
