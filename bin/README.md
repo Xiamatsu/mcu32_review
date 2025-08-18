@@ -21,13 +21,26 @@ PG0,PG1,UART7 - только в lqfp-128 ( ???? lqfp-48 ! )
 ```
 $\textsf{\color{blue}PY32F002B}$<br>
 ```
-демо-плата PY32F002B (embedfire) 
+демо-плата (embedfire) - чип PY32F002BF15U6 
 тестовая программа (заводская ?)
 ? тест памяти RAM
 ? используется порт PA6 на вход 
-? значение порта PA6 закодировано в недокументированной памяти  
+? значение порта PA6 закодировано в памяти USER OTP 
         0x1FFF02C0: 61  
         bit[3:1] = 0 (port A)  bit[7:4] = 6  =>  PA6
+```
+
+Information Block (768 bytes) - описание будет здесь, на примере PY32F002BF15U6
+```
+0x1FFF0000-0x1FFF007F:  UID
+0x1FFF0080-0x1FFF00FF:  Option bytes
+0x1FFF0100-0x1FFF017F:  Factory Config 0
+  2 dword - константы калибровочные HSI для 8 MHz И 24 MHz       
+0x1FFF0180-0x1FFF01FF:  Factory Config 1
+0x1FFF0200-0x1FFF027F:  Reserved
+0x1FFF0280-0x1FFF02FF:  USER OTP
+  - всё заполнено кодом 0xFF
+  - кроме 0x1FFF02C0: 61 FF 00 00
 ```
 
 $\textsf{\color{blue}STM32F100}$<br>
