@@ -1,10 +1,10 @@
 
-main_F002B.bin:     file format binary
+@ main_F002B.bin:     file format binary
 
 
-Disassembly of section .data:
+@ Disassembly of section .data:
 
-08000000 <.data>:
+@ 08000000 <.data>:
  8000000:	20000000		@ MSP init value = 0x20000000     
  8000004:	080000d5        @ Reset vector 	
  8000008:	080000dd        @ NMI vector
@@ -41,19 +41,19 @@ Disassembly of section .data:
 
 __init_2: 
  80000c0:	4803      	ldr		r0, [pc, #12]	@ (0x80000d0)
- 80000c2:	4685      	mov		sp, r0
- 80000c4:	f000 f814 	bl		0x80000f0
+ 80000c2:	4685      	mov		sp, r0			@ sp = 0x20000000 - not use
+ 80000c4:	f000 f814 	bl		0x80000f0		@   init_3
 __init_4:
  80000c8:	4800      	ldr		r0, [pc, #0]	@ (0x80000cc)
- 80000ca:	4700      	bx		r0
+ 80000ca:	4700      	bx		r0				@ goto main (forever loop)
  
  80000cc:	08000455
  80000d0:	20000000
 __StartUp: 
  80000d4:	4804      	ldr		r0, [pc, #16]	@ (0x80000e8) {0x080001c5}
- 80000d6:	4780      	blx		r0
+ 80000d6:	4780      	blx		r0				@   init_1 
  80000d8:	4804      	ldr		r0, [pc, #16]	@ (0x80000ec) {0x080000c1}
- 80000da:	4700      	bx		r0
+ 80000da:	4700      	bx		r0				@   init_2
  
  
  80000dc:	e7fe      	b.n		0x80000dc
@@ -66,6 +66,9 @@ __StartUp:
  80000e8:	080001c5
  80000ec:	080000c1
 __init_3:
+			@ standart procedure - run procedures from table 
+			@   no table
+			@   blank work
  80000f0:	4c06      	ldr		r4, [pc, #24]	@ (0x800010c)
  80000f2:	2501      	movs	r5, #1
  80000f4:	4e06      	ldr		r6, [pc, #24]	@ (0x8000110)
@@ -80,10 +83,10 @@ __mm__00f8:
 __mm__0104: 
  8000104:	42b4      		cmp		r4, r6
  8000106:	d3f7      		bcc.n	0x80000f8
- 8000108:	f7ff ffde 	bl		0x80000c8
+ 8000108:	f7ff ffde 	bl		0x80000c8		@ goto init_4
  
- 800010c:	08000458     
- 8000110:	08000458     
+ 800010c:	08000458     @ start table
+ 8000110:	08000458     @ end table - table = 0	
 
 __sub_0114:
  8000114:	4913      	ldr		r1, [pc, #76]	@ (0x8000164)
@@ -92,6 +95,7 @@ __sub_0114:
  800011a:	4310      	orrs	r0, r2
  800011c:	6348      	str		r0, [r1, #52]	@ 0x34
  800011e:	6348      	str		r0, [r1, #52]	@ 0x34
+ 
  8000120:	2005      	movs	r0, #5
  8000122:	0700      	lsls	r0, r0, #28
  8000124:	6801      	ldr		r1, [r0, #0]
@@ -104,6 +108,7 @@ __sub_0114:
  8000132:	6001      	str		r1, [r0, #0]
  8000134:	2300      	movs	r3, #0
  8000136:	60c3      	str		r3, [r0, #12]
+
  8000138:	490b      	ldr		r1, [pc, #44]	@ (0x8000168)
  800013a:	680a      	ldr		r2, [r1, #0]
  800013c:	2403      	movs	r4, #3
@@ -116,68 +121,74 @@ __sub_0114:
  800014a:	4322      	orrs	r2, r4
  800014c:	600a      	str		r2, [r1, #0]
  800014e:	60cb      	str		r3, [r1, #12]
+
  8000150:	6982      	ldr		r2, [r0, #24]
  8000152:	2304      	movs	r3, #4
  8000154:	431a      	orrs	r2, r3
- 8000156:	6182      	str		r2, [r0, #24]
+ 8000156:	6182      	str		r2, [r0, #24]	@ set PA2
  8000158:	6988      	ldr		r0, [r1, #24]
  800015a:	030a      	lsls	r2, r1, #12
  800015c:	4310      	orrs	r0, r2
- 800015e:	6188      	str		r0, [r1, #24]
+ 800015e:	6188      	str		r0, [r1, #24]	@ clear PB6	
 __mm__0160: 
- 8000160:	e7fe      	b.n		0x8000160
+ 8000160:	e7fe      	b.n		0x8000160		@ forever loop - stop	
  
  8000162:	0000     
  8000164:	40021000 
  8000168:	50000400     
 
 __mm__016c: 
- 800016c:	4913      	ldr		r1, [pc, #76]	@ (0x80001bc)
+ 800016c:	4913      	ldr		r1, [pc, #76]	@ (0x80001bc) {0x40021000} RCC
  800016e:	6b48      	ldr		r0, [r1, #52]	@ 0x34
  8000170:	2207      	movs	r2, #7
  8000172:	4310      	orrs	r0, r2
  8000174:	6348      	str		r0, [r1, #52]	@ 0x34
- 8000176:	6348      	str		r0, [r1, #52]	@ 0x34
+ 8000176:	6348      	str		r0, [r1, #52]	@ 0x34	enable clock PA,PB,PC
+
  8000178:	2005      	movs	r0, #5
- 800017a:	0700      	lsls	r0, r0, #28
- 800017c:	6801      	ldr		r1, [r0, #0]
+ 800017a:	0700      	lsls	r0, r0, #28		@ r0 = 0x50000000 GPIOA
+ 800017c:	6801      	ldr		r1, [r0, #0]	
  800017e:	2230      	movs	r2, #48			@ 0x30
  8000180:	4391      	bics	r1, r2
- 8000182:	6001      	str		r1, [r0, #0]
+ 8000182:	6001      	str		r1, [r0, #0]	@ clear PA2.MODE
  8000184:	6801      	ldr		r1, [r0, #0]
  8000186:	2210      	movs	r2, #16
  8000188:	4311      	orrs	r1, r2
- 800018a:	6001      	str		r1, [r0, #0]
+ 800018a:	6001      	str		r1, [r0, #0]	@ PA2.MODE = output
  800018c:	2300      	movs	r3, #0
- 800018e:	60c3      	str		r3, [r0, #12]
- 8000190:	490b      	ldr		r1, [pc, #44]	@ (0x80001c0)
+ 800018e:	60c3      	str		r3, [r0, #12]	@ PA all pins - no pull-up no pull-down
+
+ 8000190:	490b      	ldr		r1, [pc, #44]	@ (0x80001c0) {0x50000400} GPIOB
  8000192:	680a      	ldr		r2, [r1, #0]
  8000194:	2403      	movs	r4, #3
  8000196:	0324      	lsls	r4, r4, #12
  8000198:	43a2      	bics	r2, r4
- 800019a:	600a      	str		r2, [r1, #0]
+ 800019a:	600a      	str		r2, [r1, #0]	@ clear PB6.MODE
  800019c:	680a      	ldr		r2, [r1, #0]
  800019e:	2401      	movs	r4, #1
  80001a0:	0324      	lsls	r4, r4, #12
  80001a2:	4322      	orrs	r2, r4
- 80001a4:	600a      	str		r2, [r1, #0]
- 80001a6:	60cb      	str		r3, [r1, #12]
+ 80001a4:	600a      	str		r2, [r1, #0]	@ PB6.MODE = output
+ 80001a6:	60cb      	str		r3, [r1, #12]	@ PB all pins - no pull-up no pull-down
+
  80001a8:	6982      	ldr		r2, [r0, #24]
  80001aa:	2304      	movs	r3, #4
  80001ac:	431a      	orrs	r2, r3
- 80001ae:	6182      	str		r2, [r0, #24]
+ 80001ae:	6182      	str		r2, [r0, #24]	@ set PA2
  80001b0:	6988      	ldr		r0, [r1, #24]
- 80001b2:	2240      	movs	r2, #64	@ 0x40
+ 80001b2:	2240      	movs	r2, #64			@ 0x40
  80001b4:	4310      	orrs	r0, r2
- 80001b6:	6188      	str		r0, [r1, #24]
+ 80001b6:	6188      	str		r0, [r1, #24]	@ set PB6
 __mm__01b8: 
- 80001b8:	e7fe      	b.n		0x80001b8
+ 80001b8:	e7fe      	b.n		0x80001b8		@ forever loop - stop
  
  80001ba:	0000   
  80001bc:	40021000  
  80001c0:	50000400  
  
 __init_1:
+			@ this is super-main procedure
+			@
  80001c4:	489c      	ldr		r0, [pc, #624]	@ (0x8000438)
  80001c6:	6841      	ldr		r1, [r0, #4]
  80001c8:	0c09      	lsrs	r1, r1, #16
@@ -329,22 +340,27 @@ __mm__02c2:
  80002e2:	428b      		cmp		r3, r1
  80002e4:	d0ed      		beq.n	0x80002c2
  80002e6:	2000      	movs	r0, #0
- 80002e8:	43c0      	mvns	r0, r0
- 80002ea:	6038      	str		r0, [r7, #0]
- 80002ec:	4956      	ldr		r1, [pc, #344]	@ (0x8000448)
- 80002ee:	6008      	str		r0, [r1, #0]
- 80002f0:	4956      	ldr		r1, [pc, #344]	@ (0x800044c)
- 80002f2:	6008      	str		r0, [r1, #0]
- 80002f4:	4c56      	ldr		r4, [pc, #344]	@ (0x8000450)
+ 80002e8:	43c0      	mvns	r0, r0			@ r0 = 0xFFFFFFFF
+ 80002ea:	6038      	str		r0, [r7, #0]    @   PA - analog mode 
+ 80002ec:	4956      	ldr		r1, [pc, #344]	@ (0x8000448) {0x50000400}
+ 80002ee:	6008      	str		r0, [r1, #0]    @   PB - analog mode 
+ 80002f0:	4956      	ldr		r1, [pc, #344]	@ (0x800044c) {0x50000800}
+ 80002f2:	6008      	str		r0, [r1, #0]	@   PC - analog mode 
+
+@ write patterns in RAM
+ 80002f4:	4c56      	ldr		r4, [pc, #344]	@ (0x8000450) {0x55555555}
  80002f6:	2601      	movs	r6, #1
- 80002f8:	2100      	movs	r1, #0
- 80002fa:	0776      	lsls	r6, r6, #29
- 80002fc:	0063      	lsls	r3, r4, #1
+ 80002f8:	2100      	movs	r1, #0			@ r1 = 0
+ 80002fa:	0776      	lsls	r6, r6, #29		@ r6 = 0x20000000  / RAM
+ 80002fc:	0063      	lsls	r3, r4, #1		@ r3 = 0xAAAAAAAA
  80002fe:	2503      	movs	r5, #3
- 8000300:	022d      	lsls	r5, r5, #8
+ 8000300:	022d      	lsls	r5, r5, #8		@ r5 = 0x0300  / RAM = 3K = 768 dwords
 __mm__0302: 
- 8000302:	0088      		lsls	r0, r1, #2
- 8000304:	1980      		adds	r0, r0, r6
+ 8000302:	0088      		lsls	r0, r1, #2		@ r0 = r1 * 4
+ 8000304:	1980      		adds	r0, r0, r6		@ r0 = r0 + r6 
+@ in RAM store 64 bytes
+@ 55 55 55 55 AA AA AA AA ... 55 55 55 55 AA AA AA AA  (32 bytes)
+@ AA AA AA AA 55 55 55 55 ... AA AA AA AA 55 55 55 55  (32 bytes) 		
  8000306:	6004      		str		r4, [r0, #0]
  8000308:	6043      		str		r3, [r0, #4]
  800030a:	6084      		str		r4, [r0, #8]
@@ -359,12 +375,13 @@ __mm__0302:
  800031c:	62c4      		str		r4, [r0, #44]	@ 0x2c
  800031e:	6303      		str		r3, [r0, #48]	@ 0x30
  8000320:	6344      		str		r4, [r0, #52]	@ 0x34
- 8000322:	3110      		adds	r1, #16
+ 8000322:	3110      		adds	r1, #16			@ r1 += 16 (16 dword)
  8000324:	63c4      		str		r4, [r0, #60]	@ 0x3c
  8000326:	6383      		str		r3, [r0, #56]	@ 0x38
  8000328:	42a9      		cmp		r1, r5
  800032a:	d3ea      		bcc.n	0x8000302
- 
+
+@ check RAM - correct write patterns 
  800032c:	2100      	movs	r1, #0
 __mm__032e: 
  800032e:	0088      	lsls	r0, r1, #2

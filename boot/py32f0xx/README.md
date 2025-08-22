@@ -47,7 +47,21 @@ Boot прошивки для PY32F002A, PY32F003, PY32F030  совершенно
 #### 0x1FFF0E00-0x1FFF0E0F
 UID - see RM & DS
 
-#### 0x1FFF0E10-0x1FFF0E7F
+#### 0x1FFF0E10-0x1FFF0E1F
+???
+
+#### 0x1FFF0E20-0x1FFF0E23
+```
+Vrefint 1.2V  calibration constant
+  32 bit word: high 16 bit - value, low 16 bit - iverted value
+0x1FFF0E20: 66 EE 99 11
+value = 0x1199
+```
+// может быть разным в разных партиях<br>
+// есть в F002A,F030  почему-то нет в F003  ?
+
+
+#### 0x1FFF0E24-0x1FFF0E7F
 ???
 
 #### 0x1FFF0E80-0x1FFF0E8F
@@ -72,7 +86,7 @@ Option bytes - see RM & DS<br>
 
 - Калибровочные константы для сенсора температуры
 ```
-0x1FFF0F14: 0000310C    @  T = 25 C
+0x1FFF0F14: 0000310C    @  T = 30 C
 0x1FFF0F18: 000052F2    @  T = 85 C
 ```
 
