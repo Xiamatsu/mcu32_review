@@ -32,11 +32,16 @@ $\textsf{\color{blue}PY32F002B}$<br>
 
 Information Block (768 bytes) - описание будет здесь, на примере PY32F002BF15U6
 ```
-0x1FFF0000-0x1FFF007F:  UID
+0x1FFF0000-0x1FFF007F:  
+  0x1FFF0000 - 16 bytes - UID
+  0x1FFF0020 - 1 dword - Vrefint  correction value 
+               ( high 16 bit is BCD code real value 0x1204 -> Vrefint = 1.204 V)
 0x1FFF0080-0x1FFF00FF:  Option bytes
 0x1FFF0100-0x1FFF017F:  Factory Config 0
-  2 dword - константы калибровочные HSI для 8 MHz И 24 MHz       
+  0x1FFF0100 - 2 dword - константы калибровочные HSI для 24 MHz И 48 MHz  
+               ( low 16 bit of dword -  [15:13] HSI_FS ; [12:0] HSI_TRIM )     
 0x1FFF0180-0x1FFF01FF:  Factory Config 1
+  0x1FFF01A4 - 1 dword - константа калибровочная LSI ( value - low 16 bit )
 0x1FFF0200-0x1FFF027F:  Reserved
 0x1FFF0280-0x1FFF02FF:  USER OTP
   - всё заполнено кодом 0xFF
