@@ -109,6 +109,10 @@ Option bytes - see RM & DS<br>
 старшие 16 бит - инверсия значения младших 16 бит.
 ``` 
 
+#### 0x1FFF0FA8-0x1FFF0FFB
+???
+
+
 #### 0x1FFF0FFC-0x1FFF0FFF
 ```
 // для  PY32F003L24  0x1FFF0FFC: 01 00 FE FF
