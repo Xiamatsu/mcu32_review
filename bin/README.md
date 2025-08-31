@@ -40,8 +40,10 @@ Information Block (768 bytes) - описание будет здесь, на п�
 0x1FFF0100-0x1FFF017F:  Factory Config 0
   0x1FFF0100 - 2 dword - константы калибровочные HSI для 24 MHz И 48 MHz  
                ( low 16 bit of dword -  [15:13] HSI_FS ; [12:0] HSI_TRIM )     
+  0x1FFF0144 - 2 dword - константы калибровочные LSI для 32,768 kHz И 38,4 kHz  
+               ( low 16 bit of dword -  [8:0] LSI_TRIM )     
 0x1FFF0180-0x1FFF01FF:  Factory Config 1
-  0x1FFF01A4 - 1 dword - константа калибровочная LSI ( value - low 16 bit )
+  ? 0x1FFF01A4 - 1 dword - константа калибровочная LSI ( value - low 16 bit )
 0x1FFF0200-0x1FFF027F:  Reserved
 0x1FFF0280-0x1FFF02FF:  USER OTP
   - всё заполнено кодом 0xFF
