@@ -18,7 +18,7 @@ $\textsf{\color{blue}0x1FFF0D80-0x1FFF0D8F}$<br>
 ```
 $\textsf{\color{red}// !!! в некоторых чипах - нет данных - заполнено 0xFF}$
 
-#### $\textsf{\color{blue}0x1FFF0D90-0x1FFF0D9F}$
+$\textsf{\color{blue}\b{0x1FFF0D90-0x1FFF0D9F}}$
 ```
 // для  PY32F003L24D6
 0x1FFF0D90: 07 64 61 00 00 00 00 00 00 00 04 00 00 00 00 00  
