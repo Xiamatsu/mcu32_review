@@ -34,7 +34,7 @@ Support 4-digit 8-segment common-cathode LED digital tube (F030)
 номер на чипе в последней строке, последняя буква  'B' или 'E'<br>
 на демоплате embedfire как раз стоит PY32F030EK28U6<br>
 что даже отражено в наименовании<br>
-![PY32F030EK](./images/F030EK28U6.jpg)
+![PY32F030EK](./images/F030EK28U6.jpg =400x)
 
 Единственное отличие отличие по DS:<br>
 PLL_IN - только 24 MHz<br>
