@@ -45,8 +45,8 @@ PLL_IN - только 24 MHz<br>
 lqfp32        - F030 ( 1,2 pinouts )
 qfn32(5x5)    - F030 ( 2,3 pinouts )
 qfn32(4x4)    - F030 ( 4 pinout )
-qfn24(4x4)    - F030 ( 1 pinout )
-tssop24       - F030 ( 1,2 pinouts )
+qfn24(3x3)    - F030 ( 1 pinout )
+ssop24        - F030 ( 1,2 pinouts )
 qfn20(3x3)    - F030 ( 1,2,3 pinouts ); F003 ( 1,2 pinouts ); F002A ( 1 pinout )   
 tssop20       - F030 ( 1,2,3,4 pinouts ); F003 ( 1,2,3,4,5,6 pinouts ); F002A ( 1 pinout )      
 sop20         - F003 ( 1 pinout )    
@@ -57,6 +57,15 @@ essop10       - F002A ( 1 pinout )
 sop8          - F003 ( 1,2 pinouts ); F002A  ( 1 pinout )   
 dfn8(3x2)     - F003 ( 1 pinout )  
 dfn8(1.5x1.5) - F030 ( 1 pinout )  
+
+lqfp32      e=0.8
+qfn32(5x5)  e=0.5;  qfn32(4x4)  e=0.4
+ssop24      e=0.635
+qfn16(3x3)  e=0.5;  qfn20(3x3)  e=0.4;  qfn24(3x3) e=0.35  
+tssop20     e=0.65
+msop10      e=0.5;  essop10  e=1.0
+dfn8(3x2)   e=0.5;  dfn8(1.5x1.5)  e=0.4
+sop8,16,20  e=1,27
 ```
 // разводка выводов (pinout) <br>
 // определяется цифрой после буквы количества выводов<br>
