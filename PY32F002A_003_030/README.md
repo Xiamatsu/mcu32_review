@@ -76,6 +76,9 @@ sop8,16,20  e=1,27
 //   совпадают  PY32F030F2xUx = PY32F003F1xUx - qfn20<br>
 //   совпадают  PY32F030F1xUx = PY32F003F2xUx - qfn20<br>
 
+<img src="./images/puya_py32f0xx.jpg" alt="drawing" width="400"/>
+
+
 ### Демоплаты
 ```
 1. EmbedFire PY32F030K28U6TR  ( стоит PY32F030EK28U6 rev.E )
@@ -87,6 +90,9 @@ sop8,16,20  e=1,27
    LSE       - opt (PA9,10)
    I/O       - 26 (PA0-8,PA11-15,PB0-8,PF2-4) 
 ```
+
+<img src="./images/embedfire_f030.jpg" alt="drawing" width="400"/>
+
 
 ### Ремапинг 
 
