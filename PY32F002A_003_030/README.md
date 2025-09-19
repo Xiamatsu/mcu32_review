@@ -66,6 +66,17 @@ dfn8(1.5x1.5) - F030 ( 1 pinout )
 //   совпадают  PY32F030F2xUx = PY32F003F1xUx - qfn20<br>
 //   совпадают  PY32F030F1xUx = PY32F003F2xUx - qfn20<br>
 
+### Демоплаты
+```
+1. EmbedFire PY32F030K28U6TR  ( стоит PY32F030EK28U6 rev.E )
+   LED1      - Power
+   LED2,3,4  - PA2,3,4
+   Key RST   - Reset (PF4)
+   KEY1,2    - PA5,6
+   HSE       - 24 MHz (PF0,1)
+   LSE       - opt (PA9,10)
+   I/O       - 26 (PA0-8,PA11-15,PB0-8,PF2-4) 
+```
 
 ### Ремапинг 
 
