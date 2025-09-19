@@ -24,6 +24,27 @@ Support 4-digit 8-segment common-cathode LED digital tube (F030)
 Дополнительные сведения по серии из [Factory Config](../boot/py32f0xx/README.md)
 
 ### Корпуса
+```
+lqfp32        - F030 ( 1,2 pinouts )
+qfn32(5x5)    - F030 ( 2,3 pinouts )
+qfn32(4x4)    - F030 ( 4 pinout )
+qfn24(4x4)    - F030 ( 1 pinout )
+tssop24       - F030 ( 1,2 pinouts )
+qfn20(3x3)    - F030 ( 1,2,3 pinouts ); F003 ( 1,2 pinouts ); F002A ( 1 pinout )   
+tssop20       - F030 ( 1,2,3,4 pinouts ); F003 ( 1,2,3,4,5,6 pinouts ); F002A ( 1 pinout )      
+sop20         - F003 ( 1 pinout )    
+qfn16(3x3)    - F002A ( 1 pinout )  
+sop16         - F003 ( 1 pinout ); F002A ( 1 pinout )      
+msop10        - F003 ( 1 pinout ); F002A ( 1 pinout )    
+essop10       - F002A ( 1 pinout )  
+sop8          - F003 ( 1,2 pinouts ); F002A  ( 1 pinout )   
+dfn8(3x2)     - F003 ( 1 pinout )  
+dfn8(1.5x1.5) - F030 ( 1 pinout )  
+```
+// в основном все разводки (pinout) разные<br>
+// совпадают  PY32F030F2xPx = PY32F003F1xPx  tssop20<br>    
+// совпадают  PY32F030F2xUx = PY32F003F1xUx  qfn20<br>    
+// совпадают  PY32F030F1xUx = PY32F003F2xUx  qfn20<br>    
 
 
 ### Ремапинг 
@@ -86,9 +107,9 @@ openocd - пробовал подключать с WCH-LinkE (чип читал 
 2. Eclipse
     при создании проекта статртап файлы не добавляются (может чего не донастроено)<br>
     при настройке вручную - всё работает.   
-3. IAR
+3. IAR -
     В процессе изучения
-4. VSCode + PlatformIO
+4. VSCode + PlatformIO -
     В процессе изучения
 
 ### Интересные тесты
