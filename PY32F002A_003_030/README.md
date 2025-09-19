@@ -37,7 +37,7 @@ pyocd - в основном работает (кроме режима стира
 ```
 Keil  - работает, только требуется добавить описание контроллеров
         в папку <USER>\AppData\Roaming\SEGGER\JLinkDevices\ 
-        распаковать архив  [Puya]()
+        распаковать архив  [Puya](./J-Link/Puya.7z)
 Py32CubeProgrammer - работает
 ```
 
