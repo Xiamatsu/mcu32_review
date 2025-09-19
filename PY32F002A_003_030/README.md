@@ -35,7 +35,7 @@ Support 4-digit 8-segment common-cathode LED digital tube (F030)
 на демоплате embedfire как раз стоит PY32F030EK28U6<br>
 что даже отражено в наименовании<br>
   
-<img src="./images/F030EK28U6.jpg" alt="drawing" width="400"/>
+<img src="./images/F030EK28U6.png" alt="drawing" width="400"/>
 
 Единственное отличие отличие по DS:<br>
 PLL_IN - только 24 MHz<br>
@@ -76,7 +76,7 @@ sop8,16,20  e=1,27
 //   совпадают  PY32F030F2xUx = PY32F003F1xUx - qfn20<br>
 //   совпадают  PY32F030F1xUx = PY32F003F2xUx - qfn20<br>
 
-<img src="./images/puya_py32f0xx.jpg" alt="drawing" width="400"/>
+<img src="./images/puya_py32f0xx.png" alt="drawing" width="400"/>
 
 
 ### Демоплаты
@@ -91,7 +91,7 @@ sop8,16,20  e=1,27
    I/O       - 26 (PA0-8,PA11-15,PB0-8,PF2-4) 
 ```
 
-<img src="./images/embedfire_f030.jpg" alt="drawing" width="400"/>
+<img src="./images/embedfire_f030.png" alt="drawing" width="400"/>
 
 
 ### Ремапинг 
