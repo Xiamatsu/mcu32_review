@@ -41,10 +41,13 @@ sop8          - F003 ( 1,2 pinouts ); F002A  ( 1 pinout )
 dfn8(3x2)     - F003 ( 1 pinout )  
 dfn8(1.5x1.5) - F030 ( 1 pinout )  
 ```
-// в основном все разводки (pinout) разные<br>
-// совпадают  PY32F030F2xPx = PY32F003F1xPx  tssop20<br>
-// совпадают  PY32F030F2xUx = PY32F003F1xUx  qfn20<br>
-// совпадают  PY32F030F1xUx = PY32F003F2xUx  qfn20<br>
+// разводка выводов (pinout) <br>
+// определяется цифрой после буквы количества выводов<br>
+// PY32F030K<b><u>2</u></b>8T6 - 2-ой pinout
+//   в основном все разводки разные<br>
+//   совпадают  PY32F030F2xPx = PY32F003F1xPx - tssop20<br>
+//   совпадают  PY32F030F2xUx = PY32F003F1xUx - qfn20<br>
+//   совпадают  PY32F030F1xUx = PY32F003F2xUx - qfn20<br>
 
 
 ### Ремапинг 
