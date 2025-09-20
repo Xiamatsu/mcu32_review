@@ -21,7 +21,7 @@ Hardware CRC-32 module
 Support 4-digit 8-segment common-cathode LED digital tube (F030)
 ```
 
-Дополнительные сведения по серии из [Factory Config](../boot/py32f0xx/README.md)
+Дополнительные сведения по серии из [Factory Config](./bootloader/README.md)
 
 ####  !!!   ВСЕ ПРОЕКТЫ можно делать с шаблоном PY32F030x6 или PY32F030x8 
 
@@ -144,14 +144,22 @@ openocd - пробовал подключать с WCH-LinkE (чип читал 
 на PY32F030EK28U6 (демоплата) - PA2,PA3 и PA14,15 - работает // (PA9,10 - для опц. LSE и не выведены) 
 ```
 
-5. pyocd
+### Утилиты 
+
+1. Py32CubeProgrammer
+```
+```
+
+2. pyocd
 ```
 для работы с pyocd нужны файл конфигурации и пакет DFP
-в папке  pyocd  выложенены необходимые файлы
+// в папке  pyocd  выложенены необходимые файлы
 ```
 
+3. openocd - в процессе изучения 
 
-// по openocd - в процессе изучения добавится больше данных
+
+
 
 ### IDE
 
