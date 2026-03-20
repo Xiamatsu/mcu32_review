@@ -14,6 +14,9 @@
   //  по возможности будут расшифровки ( постепенные )
 ```
 
+[Сводная таблица по параметрам микроконтроллеров](https://docs.google.com/spreadsheets/d/1Efv9o9Q0RhQnE3t0KpEYy8XxTBr_Hkxc-rqZPL5IJyA/edit?usp=sharing) 
+
+
 ## Содержание
 
 1. [RISC-V](README.md#risc-v)
@@ -53,7 +56,8 @@
 ### WCH CH32V/X
 
 Есть собственная IDE для работы на основе VSCode<br>
-  (только поддержка GCC8 и GCC12 собственной редакции)
+  (только поддержка GCC8 и GCC12 собственной редакции)<br>
+Периферия подобна STM32F103  
 
 #### CH32V003 
 ``` text
@@ -89,8 +93,29 @@ CH32V003 - 48MHz, Flash 64K, RAM 8K;
 ## Cortex-M0/M0+
 
 ### PUYA - PY32
+
+Периферия подобна STM32F0xx, с дополнениями
+
 #### PY32F002A/F003/F030
+```
+  Cortex-M0+, 48MHz, 16-64K Flash; 2-8K SRAM
+  много разных малых корпусов и распиновок 8-32pin
+  HSI - широкий диапазон изменения  ~2MHz - ~50MHz
+  FastIO - есть
+  в PY32F002A/F003 есть всё что в PY32F030 (одинаковый чип)
+```
+более подробно -> [PY32F002A_F003_F030](https://github.com/Xiamatsu/py32f002a_003_030)
+
 #### PY32F002B/L020
+```
+  Cortex-M0+, 48MHz, 24K Flash; 3K SRAM
+  только корпуса от 8 до 20 pin
+  нет PLL,DMA,RTC,Boot
+  HSI - широкий диапазон изменения  ~2MHz - ~80MHz
+  FastIO - есть
+```
+более подробно -> [PY32F002B](https://github.com/Xiamatsu/py32f002b)
+
 #### PY32F040/F071/F072
 
 ### XHSC(Huada) - HC32
@@ -109,6 +134,10 @@ CH32V003 - 48MHz, Flash 64K, RAM 8K;
 
 ### Cmsemicon - CMS32
 #### CMS32L051
+```
+Cortex-M0+, 64MHz, 64K Fkash, 8K RAM, 1.5K DataFlash
+  
+```
 
 ### Nations(NSING) - N32
 #### N32G030/031/032
