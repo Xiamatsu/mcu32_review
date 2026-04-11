@@ -23,6 +23,8 @@
    - [WCH CH32V/X](README.md#wch-ch32vx)
      - [CH32V003](README.md#ch32v003) | [CH32V006](README.md#ch32v006) | [CH32X035](README.md#ch32x035) | [CH32V203](README.md#ch32v203)
 2. [Cortex-M0/M0+](README.md#cortex-m0m0)
+   - [STMicroelectronics](README.md#stmicroelectronics---stm32)
+     - [STM32F042](README.md#stm32f042) | [STM32C011](README.md#stm32c011) | [STM32G030](README.md#stm32g030) | [STM32G031](README.md#stm32G031) | [STM32L011](README.md#stm32l011)  
    - [PUYA](README.md#puya---py32) 
      - [PY32F002A/F003/F030](README.md#py32f002af003f030) | [PY32F002B/L020](README.md#py32f002bl020) | [PY32F040/F071/F072](README.md#py32f040f071f072)
    - [XHSC(Huada)](README.md#xhschuada---hc32)
@@ -35,8 +37,6 @@
      - [CMS32L051](README.md#cms32l051)
    - [Nations(NSING)](README.md#nationsnsing---n32)
      - [N32G030/031/032](README.md#n32g030031032)
-   - [STMicroelectronics](README.md#stmicroelectronics---stm32)
-     - [STM32C011](README.md#stm32c011) | [STM32G030](README.md#stm32g030) | [STM32G031](README.md#stm32G031) | [STM32L011](README.md#stm32l011)  
    - [Linko](README.md#linko---lks32)
      - [LKS32MC037](README.md#lks32mc037) | [LKS32MC081](README.md#lks32mc081)
 3. [Cortex-M4/M4F](README.md#cortex-m4m4f)
@@ -61,13 +61,14 @@
 
 #### CH32V003 
 ``` text
-CH32V003 - 48MHz, Flash 16K, RAM 2K;  
-           so8,so16,qfn20,tssop20  (2.7-5.5V)
+  - 48MHz, Flash 16K, RAM 2K;  
+  корпуса - so8,so16,qfn20,tssop20  (2.7-5.5V)
 
   '+' программирование и отладка по 1 проводу
   '+' есть простой  ОУ 
+
   '-' нет умножения в ISA 
-  '-' в корпусах so8 и so16 нет SPI
+  '-' в корпусах so8 и so16 нет полного SPI
   '-' SYSCLK только HSI или HSI/n
   '-' ADC 10-bit, нет температурного датчика
   '-' потребление при старте высокое при HSI/6 = 8 MHz
@@ -75,22 +76,27 @@ CH32V003 - 48MHz, Flash 16K, RAM 2K;
 ```
 #### CH32V006 
 ```
-CH32V003 - 48MHz, Flash 64K, RAM 8K;  
-           so8,so16,qfn20,tssop20  (2.7-5.5V)
+  - 48MHz, Flash 64K, RAM 8K;  
+  корпуса - qfn20,tssop20,qsop24  (2.7-5.5V)
 
   '+' программирование и отладка по 1 проводу
   '+' есть настраиваемые ОУ
   '+' добавили умножение в ISA (расширение Zmul)
-  '-' в корпусах so8 и so16 нет SPI
   '-' SYSCLK только HSI или HSI/n
-  '-' ADC 10-bit, нет температурного датчика
+  '-' нет температурного датчика
   '-' потребление при старте высокое при HSI/6 = 8 MHz
-  '-' на минимальных частотах HCLK (94kHz - 750kHz) потребление минимум 1.1 мА
 ```
 #### CH32X035 
 #### CH32V203 
 
 ## Cortex-M0/M0+
+
+### STMicroelectronics - STM32
+#### STM32F042
+#### STM32C011
+#### STM32G030
+#### STM32G031
+#### STM32L011
 
 ### PUYA - PY32
 
@@ -98,25 +104,53 @@ CH32V003 - 48MHz, Flash 64K, RAM 8K;
 
 #### PY32F002A/F003/F030
 ```
-  Cortex-M0+, 48MHz, 16-64K Flash; 2-8K SRAM
+  Cortex-M0+, 48MHz, 16-64K Flash; 2-8K SRAM, (1.7-5.5V)
   много разных малых корпусов и распиновок 8-32pin
   HSI - широкий диапазон изменения  ~2MHz - ~50MHz
   FastIO - есть
   в PY32F002A/F003 есть всё что в PY32F030 (одинаковый чип)
+  -------------
+  ядро Cortex-M0+  небыстрое (1.79 Coremark/MHz при WS=0)
+  prefetch - 32bit ;  проседание производительности на высоких частотах
+  особенность - чтение/запись RAM 4 cycle  ( влияние наличия DMA ? )
+  -------------
+  в рабочем режиме очень экономичные 
+  в LPRun (32kHz)  - 100-170 мкА
 ```
 более подробно -> [PY32F002A_F003_F030](https://github.com/Xiamatsu/py32f002a_003_030)
 
 #### PY32F002B/L020
 ```
-  Cortex-M0+, 48MHz, 24K Flash; 3K SRAM
+  Cortex-M0+, 48MHz, 24K Flash; 3K SRAM, (1.7-5.5V)
   только корпуса от 8 до 20 pin
   нет PLL,DMA,RTC,Boot
   HSI - широкий диапазон изменения  ~2MHz - ~80MHz
+  ( константы калибровки - 24MHz,48Mhz )
+  ( для PY32F002B - 48 MHz - не заявлен и калибровка неправильная  )
   FastIO - есть
+  -------------
+  ядро Cortex-M0+  быстрое (2.39 Coremark/MHz при WS=0)
+  prefetch - 32bit ;  проседание производительности на высоких частотах
+  -------------
+  в рабочем режиме очень экономичные 
+  в LPRun (32kHz)  - 100-170 мкА
 ```
 более подробно -> [PY32F002B](https://github.com/Xiamatsu/py32f002b)
 
 #### PY32F040/F071/F072
+```
+  Cortex-M0+, 72MHz, 128K Flash; 16K SRAM, (1.7-5.5V)
+  корпуса от 32 до 64 pin
+  FastIO - есть
+  есть подозрение, что одинаковый чип 
+  и в F071,F040  возможно есть CAN,USB,DAC от  F072
+  -------------
+  ядро Cortex-M0+  небыстрое (1.79 Coremark/MHz при WS=0)
+  есть cache & prefetch - в документации не описаны но включены по сбросу;
+     маленькое проседание производительности на высоких частотах
+  особенность - чтение/запись RAM - 4 cycle  ( влияние наличия DMA ? )
+```
+
 
 ### XHSC(Huada) - HC32
 #### HC32L110
@@ -130,7 +164,24 @@ CH32V003 - 48MHz, Flash 64K, RAM 8K;
 ### WXSC - CW32
 #### CW32F030
 #### CW32L031
+
 #### CW32L010
+```
+  Cortex-M0+, 48MHz, 64K Flash; 4K SRAM, (1.7-5.5V)
+  только корпуса 20 pin
+  нет PLL,DMA,FastIO
+  HSI - широкий диапазон изменения  ~4MHz - ~72MHz
+  ( константа калибровки - 48Mhz )
+  -------------
+  Второе поколение MCU от производителя
+  особенность - таймер TIM1 - улучшенный TIM1 как в STM32G0 
+  только  все 6 каналов захвата/сравнения  с входами (6) и с комплементарными выходами (6x2)
+  а также два дополнительных режима PWM №5,6
+  -------------
+  ядро Cortex-M0+  очень небыстрое (1.39 Coremark/MHz при WS=0)
+  prefetch - 32bit ;  проседание производительности на высоких частотах
+  особенность - умножение MULS - 32 cycle 
+```
 
 ### Cmsemicon - CMS32
 #### CMS32L051
@@ -142,12 +193,6 @@ Cortex-M0+, 64MHz, 64K Fkash, 8K RAM, 1.5K DataFlash
 
 ### Nations(NSING) - N32
 #### N32G030/031/032
-
-### STMicroelectronics - STM32
-#### STM32C011
-#### STM32G030
-#### STM32G031
-#### STM32L011
 
 ### Linko - LKS32
 #### LKS32MC037
